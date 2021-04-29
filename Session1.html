@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+   <script src="https://unpkg.com/react@17.0.2/umd/react.development.js" ></script>
+   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js" ></script>
+   <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js" ></script>
+   <link
+   rel="stylesheet"
+   href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+       
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then((json)=>
+            {
+                test(json)
+            
+            });
+    
+       
+       
+        function test(products)
+        {
+            console.log(products)
+            const element=(
+            
+            <div className="container" style={{direction:"rtl"}} >
+                <h1>Product Names</h1>
+            <div className="row pt-5" >
+            
+                {products.map((s, i) => {
+                    return(
+                        <div className="col-4" key={i}>
+                        <div className="card ">
+                        <div className="card-body">
+                            <h5 className="card-title">{s.title}</h5>
+                            <h6 className="card-subtitle mb-2 text-muted">{s.category}</h6>
+                            <p className="card-text">{s.description}</p>
+                            <a href="#" className="card-link">Card link</a>
+                            <a href="#" className="card-link">Another link</a>
+                        </div>
+                        </div>
+                    </div>
+                    // <div className="card" key={i}>
+                    // <div className="card-body">
+                    // <h5 className="card-title">  
+                    //      {s.title}
+                    // </h5>
+
+                    // </div>
+                    // </div>
+                )
+                 })}
+            </div>
+            </div>
+        )
+        
+        ReactDOM.render(
+            element,
+            document.getElementById('app')
+            )
+         
+        }
+        
+      
+            
+    </script>
+</body>
+
+</html>
